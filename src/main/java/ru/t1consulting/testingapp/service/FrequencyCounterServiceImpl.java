@@ -1,14 +1,17 @@
 package ru.t1consulting.testingapp.service;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import org.springframework.stereotype.Service;
+
 import java.util.Map;
 import java.util.stream.Collectors;
 
+@Service
 public class FrequencyCounterServiceImpl implements FrequencyCounterService {
 
     @Override
-    public String countFrequencies(@NotNull String str) {
-        if (str.isEmpty()) return str;
+    public String countFrequencies(@NotNull @NotEmpty String str) {
         Map<Character, Long> map = countLetters(str);
         return sortByValueAndJoin(map);
     }

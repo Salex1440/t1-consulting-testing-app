@@ -1,9 +1,13 @@
 package ru.t1consulting.testingapp.service;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import org.springframework.validation.annotation.Validated;
 
+
+@Validated
 public interface FrequencyCounterService {
 
-    String countFrequencies(@NotNull String str);
+    String countFrequencies(@NotNull @NotEmpty String str);
 
 }
